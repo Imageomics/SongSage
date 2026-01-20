@@ -1,19 +1,25 @@
-# SongSage
+# 🎶 SongSage
 SongSage is a Model Context Protocol (MCP) layer for bioacoustic analysis that augments BirdNET-Analyzer-Sierra detections with contextual reasoning, uncertainty-aware summaries, and ecologist-oriented insight extraction.
 
 Rather than stopping at raw species detections, SongSage enables natural-language ecological interpretation of BirdNET outputs—helping researchers explore patterns, confidence, rarity, and temporal dynamics in large-scale acoustic datasets.
 
-# Key Features
+🌍 Motivation
 
-🧠 Contextual reasoning over BirdNET detections
+BirdNET is highly effective at identifying bird species from audio recordings. However, in field-deployed acoustic monitoring, species detections alone are often insufficient for answering ecological questions at scale.
 
-📊 Uncertainty-aware summaries (confidence distributions, quality checks)
+Common challenges include:
 
-🐦 Ecologist-focused insights (rare species, activity peaks, seasonal trends)
+- Large volumes of detections with limited ecological prioritization
 
-🗣 Natural-language querying via MCP-compatible clients (e.g. Claude Desktop)
+- Difficulty identifying rare or unusual species
 
-🔥 Rich visualizations, including bird activity heatmaps
+- Limited support for understanding temporal activity patterns
+
+- Lack of structured reasoning about confidence and uncertainty
+
+- Significant manual effort required for post-processing and interpretation
+
+- SongSage was developed to address these limitations by adding a reasoning and interpretation layer on top of BirdNET outputs.
 
 
 
