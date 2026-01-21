@@ -45,3 +45,24 @@ flowchart TB
   DR --> MCP
 
   MCP --> OUT
+
+## 🧪 Key Capabilities
+
+- **Bioacoustic Analysis Pipeline**  
+  Integrates BirdNET for automated bird species detection from long-duration audio recordings, supporting scalable biodiversity monitoring.
+
+- **Conversational AI Interface via MCP**  
+  Exposes analysis workflows through a Model Context Protocol (MCP) server, enabling natural-language queries and human-in-the-loop exploration in Claude Desktop.
+
+- **Structured Data Ingestion and Normalization**  
+  Loads and standardizes BirdNET detection outputs across multiple formats, with automated column mapping and schema normalization.
+
+- **Interactive Query and Aggregation**  
+  Supports filtering, aggregation, and summarization of detections by species, time, confidence, and recording context.
+
+- **Temporal and Ecological Analytics**  
+  Enables analysis of daily, seasonal, and long-term activity patterns to support ecological interpretation and monitoring.
+
+- **Visualization and Insight Generation**  
+  Produces visual summaries such as activity heatmaps and temporal plots to surface trends and behavioral signals.
+
