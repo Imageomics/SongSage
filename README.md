@@ -11,4 +11,16 @@ Bioacoustic monitoring is increasingly used to study biodiversity and ecosystem 
 SongSage turns these detections into an interactive, conversational analysis system. By exposing BirdNET results through a Model Context Protocol (MCP) server, ecologists, conservation practitioners, and citizen scientists can query, summarize, and visualize real-world acoustic data using natural language—without writing code.
 
 
+## 🔍 Motivation: From Research to Real-World Use
+
+Bioacoustic sensing is a scalable, low-impact approach for monitoring bird populations, but the outputs of state-of-the-art models like BirdNET are often difficult to explore without custom analysis pipelines.
+
+Inspired by multimodal wildlife monitoring research at the SmartWilds framework, SongSage focuses on the missing interaction layer—turning BirdNET detections into an interactive system that supports human-in-the-loop exploration and real-world ecological analysis.
+
+## 🧭 What Is SongSage?
+
+SongSage is an interactive bioacoustic analysis system that connects BirdNET’s bird species detections with a conversational AI interface. It allows users to query, summarize, and visualize bird activity from real-world audio recordings using natural language instead of custom scripts.
+
+Designed for ecologists, conservation practitioners, and citizen scientists, SongSage transforms static BirdNET outputs into a usable analysis layer, supporting exploratory data analysis, long-term monitoring, and human-in-the-loop ecological insight.
+
 
