@@ -26,20 +26,32 @@ Designed for ecologists, conservation practitioners, and citizen scientists, Son
 ## 🏗️ System Architecture
 
 ```mermaid
-flowchart LR
-  U[Users] --> C[LLM Client]
-  C --> S[SongSage MCP Server]
+flowchart TB
+  U[Ecologists and Citizen Scientists]
+  CD[Claude Desktop]
+  MCP[SongSage MCP Server]
 
-  A[Audio Files] --> B[BirdNET Analyzer]
-  B --> R[Detection Results]
-  R --> S
+  AF[Audio Files]
+  BN[BirdNET Analyzer]
+  DR[Detection Results]
 
-  S --> Q[Query and Analytics Engine]
-  S --> V[Visualization Engine]
-  S --> E[Export Module]
+  QA[Query and Analytics Engine]
+  VZ[Visualization Engine]
+  EX[Export Module]
 
-  Q --> O[Insights]
-  V --> O
-  E --> O
+  OUT[Summaries and Visual Insights]
 
+  U --> CD
+  CD --> MCP
 
+  AF --> BN
+  BN --> DR
+  DR --> MCP
+
+  MCP --> QA
+  MCP --> VZ
+  MCP --> EX
+
+  QA --> OUT
+  VZ --> OUT
+  EX --> OUT
