@@ -25,9 +25,8 @@ Designed for ecologists, conservation practitioners, and citizen scientists, Son
 
 ## 🏗️ System Architecture
 
-```mermaid
 flowchart TB
-  U[Ecologists and Citizen Scientists]
+  U[Users]
   CD[Claude Desktop]
   MCP[SongSage MCP Server]
 
@@ -43,6 +42,8 @@ flowchart TB
   AF --> BN
   BN --> DR
   DR --> MCP
+
+  MCP --> OUT
 
   MCP --> OUT
 
