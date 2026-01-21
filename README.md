@@ -41,7 +41,7 @@ flowchart TB
     AF --> BN --> DR --> MCP
     MCP --> OUT
 
-```md
+
 
 ## 🧪 Key Capabilities
 
