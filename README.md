@@ -86,7 +86,7 @@ SongSage exposes its functionality through the Model Context Protocol (MCP), all
 git clone https://github.com/<your-username>/songsage.git
 cd songsage
 
-'''
+
 
 ```md
 ## 🧪 Create and Activate a Virtual Environment
