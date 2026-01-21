@@ -26,26 +26,19 @@ Designed for ecologists, conservation practitioners, and citizen scientists, Son
 ## 🏗️ System Architecture
 
 flowchart TB
-  U[Users]
-  CD[Claude Desktop]
-  MCP[SongSage MCP Server]
+    U[Users]
+    CD[Claude Desktop]
+    MCP[SongSage MCP Server]
 
-  AF[Audio Files]
-  BN[BirdNET Analyzer]
-  DR[Detection Results]
+    AF[Audio Files]
+    BN[BirdNET Analyzer]
+    DR[Detection Results]
 
-  OUT[Summaries and Visual Insights]
+    OUT[Summaries and Visual Insights]
 
-  U --> CD
-  CD --> MCP
-
-  AF --> BN
-  BN --> DR
-  DR --> MCP
-
-  MCP --> OUT
-
-  MCP --> OUT
+    U --> CD --> MCP
+    AF --> BN --> DR --> MCP
+    MCP --> OUT
 
 
 
