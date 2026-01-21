@@ -43,19 +43,3 @@ flowchart TB
 
 ```md
 
-## 🧪 Key Capabilities
-
-- **Bioacoustic Analysis Pipeline**  
-  Integrates BirdNET for automated bird species detection from long-duration audio recordings.
-
-- **Conversational AI Interface via MCP**  
-  Enables natural-language interaction with bioacoustic data through Claude Desktop.
-
-- **Structured Data Normalization**  
-  Parses and standardizes BirdNET detection outputs into queryable formats.
-
-- **Temporal and Ecological Analytics**  
-  Supports aggregation and analysis of bird activity across time scales.
-
-- **Visual Insight Generation**  
-  Produces summaries and heatmaps to support ecological interpretation.
