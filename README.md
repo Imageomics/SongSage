@@ -39,27 +39,32 @@ flowchart TB
 
     U --> CD --> MCP
     AF --> BN --> DR --> MCP
-    MCP --> OUT```
+    MCP --> OUT
 
 
+⚠️ **Important rules followed here**:
+- ` ```mermaid ` starts the block
+- ` ``` ` ends the block **alone on a line**
+- No emojis or headers inside Mermaid
 
+---
+
+### ✅ Key Capabilities (Markdown, SAFE)
+
+```md
 ## 🧪 Key Capabilities
 
 - **Bioacoustic Analysis Pipeline**  
-  Integrates BirdNET for automated bird species detection from long-duration audio recordings, supporting scalable biodiversity monitoring.
+  Integrates BirdNET for automated bird species detection from long-duration audio recordings.
 
 - **Conversational AI Interface via MCP**  
-  Exposes analysis workflows through a Model Context Protocol (MCP) server, enabling natural-language queries and human-in-the-loop exploration in Claude Desktop.
+  Enables natural-language interaction with bioacoustic data through Claude Desktop.
 
-- **Structured Data Ingestion and Normalization**  
-  Loads and standardizes BirdNET detection outputs across multiple formats, with automated column mapping and schema normalization.
-
-- **Interactive Query and Aggregation**  
-  Supports filtering, aggregation, and summarization of detections by species, time, confidence, and recording context.
+- **Structured Data Normalization**  
+  Parses and standardizes BirdNET detection outputs into queryable formats.
 
 - **Temporal and Ecological Analytics**  
-  Enables analysis of daily, seasonal, and long-term activity patterns to support ecological interpretation and monitoring.
+  Supports aggregation and analysis of bird activity across time scales.
 
-- **Visualization and Insight Generation**  
-  Produces visual summaries such as activity heatmaps and temporal plots to surface trends and behavioral signals.
-
+- **Visual Insight Generation**  
+  Produces summaries and heatmaps to support ecological interpretation.
