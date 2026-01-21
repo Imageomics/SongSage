@@ -27,18 +27,19 @@ Designed for ecologists, conservation practitioners, and citizen scientists, Son
 
 ```mermaid
 flowchart LR
-  U[Ecologist / Citizen Scientist] -->|Natural language queries| C[Claude Desktop / LLM Client]
-  C -->|MCP (JSON-RPC)| S[SongSage MCP Server]
+  U[Users] --> C[LLM Client]
+  C --> S[SongSage MCP Server]
 
-  A[Audio Recordings\n(WAV/MP3/FLAC...)] --> B[BirdNET-Analyzer]
-  B -->|Detections| R[Results Directory\n(CSV/labels)]
-  R -->|Load + Normalize| S
+  A[Audio Files] --> B[BirdNET Analyzer]
+  B --> R[Detection Results]
+  R --> S
 
-  S -->|Query + Aggregate| Q[Analytics Engine\n(pandas/numpy)]
-  S -->|Visualize| V[Heatmaps / Plots\n(matplotlib)]
-  S -->|Export| E[Exports\n(CSV summaries)]
+  S --> Q[Query and Analytics Engine]
+  S --> V[Visualization Engine]
+  S --> E[Export Module]
 
-  V --> O[PNG Outputs]
-  Q --> O
+  Q --> O[Insights]
+  V --> O
   E --> O
+
 
