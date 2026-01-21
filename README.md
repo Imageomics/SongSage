@@ -118,3 +118,35 @@ BIRDNET_RESULTS_DIR=/path/to/BirdNET-Analyzer-Sierra/results
 BIRDNET_AUDIO_DIR=/path/to/audio/files
 ```
 
+## 🔍 Example Workflows
+
+SongSage is designed to be used through natural-language interaction in Claude Desktop. Below are example prompts that reflect real-world ecological and citizen science workflows.
+
+### Daily Monitoring Summary
+> “Summarize bird activity detected in today’s audio recordings and list the most active species.”
+
+---
+
+### Rare or Unusual Species Detection
+> “Show bird species detected fewer than three times this week with confidence above 0.7.”
+
+---
+
+### Temporal Activity Analysis
+> “When are birds most active during the day across all recordings?”
+
+---
+
+### Species-Specific Exploration
+> “Give me a detailed summary of detections for Northern Cardinal, including confidence statistics and activity patterns.”
+
+---
+
+### Seasonal or Long-Term Trends
+> “Compare bird activity between early summer and late summer recordings.”
+
+---
+
+### Visualization-Driven Insight
+> “Generate a heatmap showing bird activity by hour of day for the most frequently detected species.”
+
