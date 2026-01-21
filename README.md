@@ -41,17 +41,8 @@ flowchart TB
     AF --> BN --> DR --> MCP
     MCP --> OUT
 
-
-⚠️ **Important rules followed here**:
-- ` ```mermaid ` starts the block
-- ` ``` ` ends the block **alone on a line**
-- No emojis or headers inside Mermaid
-
----
-
-### ✅ Key Capabilities (Markdown, SAFE)
-
 ```md
+
 ## 🧪 Key Capabilities
 
 - **Bioacoustic Analysis Pipeline**  
