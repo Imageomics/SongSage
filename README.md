@@ -35,10 +35,6 @@ flowchart TB
   BN[BirdNET Analyzer]
   DR[Detection Results]
 
-  QA[Query and Analytics Engine]
-  VZ[Visualization Engine]
-  EX[Export Module]
-
   OUT[Summaries and Visual Insights]
 
   U --> CD
@@ -48,10 +44,4 @@ flowchart TB
   BN --> DR
   DR --> MCP
 
-  MCP --> QA
-  MCP --> VZ
-  MCP --> EX
-
-  QA --> OUT
-  VZ --> OUT
-  EX --> OUT
+  MCP --> OUT
