@@ -70,12 +70,10 @@ flowchart TB
 | Feature | Description |
 |---------|-------------|
 | **Natural Language Queries** | Ask questions about your data in plain English |
-| **Species Detection** | Leverage BirdNET's 6,000+ species recognition |
+| **Species Detection** | Leverage BirdNET's species recognition |
 | **Temporal Analytics** | Analyze daily, seasonal, and long-term patterns |
 | **Interactive Filtering** | Filter by species, confidence, time, and location |
 | **Heatmap Generation** | Visualize activity patterns across time and species |
-| **Batch Processing** | Analyze multiple recordings in one command |
-| **Data Export** | Export filtered results in multiple formats |
 
 ---
 
@@ -92,7 +90,7 @@ flowchart TB
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/songsage.git
+git clone https://github.com/Imageomics/SongSage.git
 cd songsage
 ```
 
@@ -270,11 +268,6 @@ This tool lowers the barrier for researchers and citizen scientists to explore a
 
 ---
 
-## 🤝 Contributing
-
-Contributions welcome! Please maintain cross-platform compatibility and update documentation for new features.
-
----
 
 ## 📄 License
 
