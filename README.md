@@ -23,4 +23,22 @@ SongSage is an interactive bioacoustic analysis system that connects BirdNET’s
 
 Designed for ecologists, conservation practitioners, and citizen scientists, SongSage transforms static BirdNET outputs into a usable analysis layer, supporting exploratory data analysis, long-term monitoring, and human-in-the-loop ecological insight.
 
+## 🏗️ System Architecture
+
+```mermaid
+flowchart LR
+  U[Ecologist / Citizen Scientist] -->|Natural language queries| C[Claude Desktop / LLM Client]
+  C -->|MCP (JSON-RPC)| S[SongSage MCP Server]
+
+  A[Audio Recordings\n(WAV/MP3/FLAC...)] --> B[BirdNET-Analyzer]
+  B -->|Detections| R[Results Directory\n(CSV/labels)]
+  R -->|Load + Normalize| S
+
+  S -->|Query + Aggregate| Q[Analytics Engine\n(pandas/numpy)]
+  S -->|Visualize| V[Heatmaps / Plots\n(matplotlib)]
+  S -->|Export| E[Exports\n(CSV summaries)]
+
+  V --> O[PNG Outputs]
+  Q --> O
+  E --> O
 
