@@ -68,3 +68,39 @@ flowchart TB
 - **Real-World Deployment Readiness**  
   Designed for use by ecologists and citizen scientists analyzing real acoustic data, emphasizing usability, reproducibility, and clarity.lyzing real acoustic data, emphasizing usability, reproducibility, and clarity.
 
+  ## 🛠️ Interaction Model (MCP)
+
+SongSage exposes its functionality through the Model Context Protocol (MCP), allowing Claude Desktop to interact with bioacoustic data via executable tools, read-only resources, and guided prompts. This structure enables natural-language-driven analysis while maintaining clear separation between data access, computation, and user workflows.
+
+## 📋 Prerequisites
+
+- Python 3.10+
+- BirdNET-Analyzer-Sierra installed locally  
+  https://github.com/birdnet-team/BirdNET-Analyzer-Sierra
+- Claude Desktop
+
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/<your-username>/songsage.git
+cd songsage
+
+---
+
+```md
+## 🧪 Create and Activate a Virtual Environment
+
+```bash
+python -m venv venv
+
+macOS / 🐧 Linux
+source venv/bin/activate
+
+🪟 Windows
+venv\Scripts\activate
+
+📥 Install Dependencies
+pip install -r requirements.txt
+
+
