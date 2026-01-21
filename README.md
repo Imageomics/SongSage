@@ -93,12 +93,12 @@ cd songsage
 python -m venv venv
 ```
 
-#### macOS / 🐧 Linux
+#### macOS / Linux
 ```bash
 source venv/bin/activate
 ```
 
-#### 🪟 Windows
+#### Windows
 ```bash
 venv\Scripts\activate
 ```
@@ -108,4 +108,13 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+### ⚙️ Configuration
+SongSage can be configured using a .env file to specify paths to your BirdNET-Analyzer-Sierra installation, audio files, and results directory.
+
+Example .env configuration
+```bash
+BIRDNET_ANALYZER_DIR=/path/to/BirdNET-Analyzer-Sierra
+BIRDNET_RESULTS_DIR=/path/to/BirdNET-Analyzer-Sierra/results
+BIRDNET_AUDIO_DIR=/path/to/audio/files
+```
 
