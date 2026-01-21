@@ -25,7 +25,7 @@ Designed for ecologists, conservation practitioners, and citizen scientists, Son
 
 ## 🏗️ System Architecture
 
-```mermaid
+
 flowchart TB
     U[Users]
     CD[Claude Desktop]
