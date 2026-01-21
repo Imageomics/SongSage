@@ -82,25 +82,30 @@ SongSage exposes its functionality through the Model Context Protocol (MCP), all
 
 ## 📦 Installation
 
+### Clone the Repository
 ```bash
 git clone https://github.com/<your-username>/songsage.git
 cd songsage
+```
 
-
-
-```md
-## 🧪 Create and Activate a Virtual Environment
-
+### 🧪 Create and Activate a Virtual Environment
 ```bash
 python -m venv venv
+```
 
-macOS / 🐧 Linux
+#### macOS / 🐧 Linux
+```bash
 source venv/bin/activate
+```
 
-🪟 Windows
+#### 🪟 Windows
+```bash
 venv\Scripts\activate
+```
 
-📥 Install Dependencies
+### 📥 Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
 
