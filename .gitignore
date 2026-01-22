@@ -1,0 +1,42 @@
+# Python
+venv/
+__pycache__/
+src/birdnet_mcp/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+heatmaps/*.png
+data/
+*.log
+error_log.txt
+
+# Claude Code local settings
+.claude/
+
+# Keep directory structure
+!heatmaps/.gitkeep
+
+
