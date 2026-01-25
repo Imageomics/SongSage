@@ -232,12 +232,18 @@ Pre-built multi-step analyses:
 ## Project Structure
 
 ```
-songsage/
+SongSage/
+├── assets/             # Logo and images
+├── heatmaps/           # Generated visualizations
 ├── mcp_server.py       # MCP server implementation
 ├── requirements.txt    # Python dependencies
+├── __init__.py         # Python package init
 ├── .env.example        # Configuration template
 ├── setup.sh            # Linux/macOS installer
-├── heatmaps/           # Generated visualizations
+├── DOCUMENTATION.md    # Extended documentation
+├── INSTALL_LINUX.md    # Linux installation guide
+├── INSTALL_MAC.md      # macOS installation guide
+├── INSTALL_WINDOWS.md  # Windows installation guide
 └── README.md
 ```
 
