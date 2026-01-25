@@ -38,14 +38,17 @@ SYSTEM = platform.system()
 
 def _get_default_birdnet_path() -> Path:
     """Detect default BirdNET installation path based on OS."""
-    if SYSTEM == 'Windows':
-        return Path.home() / "BirdNET-Analyzer"
-    elif SYSTEM == 'Darwin':  # macOS
-        return Path.home() / "BirdNET-Analyzer"
-    else:  # Linux
-        sierra_path = Path.home() / "BirdNET-Analyzer-Sierra"
-        standard_path = Path.home() / "BirdNET-Analyzer"
-        return sierra_path if sierra_path.exists() else standard_path
+    # Check for BirdNET-Analyzer-Sierra first, then standard BirdNET-Analyzer
+    sierra_path = Path.home() / "BirdNET-Analyzer-Sierra"
+    standard_path = Path.home() / "BirdNET-Analyzer"
+
+    if sierra_path.exists():
+        return sierra_path
+    elif standard_path.exists():
+        return standard_path
+    else:
+        # Default to Sierra path (user will need to install or configure)
+        return sierra_path
 
 DEFAULT_BASE = _get_default_birdnet_path()
 RESULTS_DIR = Path(os.getenv('BIRDNET_RESULTS_DIR', str(DEFAULT_BASE / "results")))
