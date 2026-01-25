@@ -2,7 +2,7 @@
   <img src="assets/logo.svg" alt="SongSage Logo" width="280">
 </p>
 
-<h1 align="center">🎶 SongSage</h1>
+<h1 align="center">SongSage</h1>
 
 <p align="center">
   <strong>Conversational Bioacoustic Wildlife Monitoring with BirdNET and MCP</strong>
@@ -16,7 +16,7 @@ SongSage is a Model Context Protocol (MCP) server that connects [BirdNET-Analyze
 
 ---
 
-## 🔍 Why SongSage?
+## Why SongSage?
 
 Bioacoustic monitoring is a powerful tool for studying biodiversity, but BirdNET outputs are static CSV files requiring custom scripts to analyze. SongSage transforms these detections into an **interactive, conversational analysis system**.
 
@@ -26,7 +26,7 @@ Ecologists, conservation practitioners, and citizen scientists can now query, su
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```mermaid
 flowchart TB
@@ -65,7 +65,7 @@ flowchart TB
 
 ---
 
-## ✨ Key Capabilities
+## Key Capabilities
 
 | Feature | Description |
 |---------|-------------|
@@ -77,7 +77,7 @@ flowchart TB
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.10+
 - [BirdNET-Analyzer-Sierra](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra)
@@ -85,13 +85,13 @@ flowchart TB
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Imageomics/SongSage.git
-cd songsage
+cd SongSage
 ```
 
 ### 2. Create Virtual Environment
@@ -142,9 +142,9 @@ Add to your Claude Desktop config:
 {
   "mcpServers": {
     "songsage": {
-      "command": "/path/to/songsage/venv/bin/python",
+      "command": "/path/to/SongSage/venv/bin/python",
       "args": ["-m", "mcp_server"],
-      "cwd": "/path/to/songsage"
+      "cwd": "/path/to/SongSage"
     }
   }
 }
@@ -152,7 +152,7 @@ Add to your Claude Desktop config:
 
 ---
 
-## 💬 Usage Examples
+## Usage Examples
 
 **Daily Monitoring**
 > "Summarize bird activity from today's recordings."
@@ -174,7 +174,7 @@ Add to your Claude Desktop config:
 
 ---
 
-## 🛠️ Tools
+## Tools
 
 ### Analysis
 
@@ -213,7 +213,7 @@ Add to your Claude Desktop config:
 
 ---
 
-## 🧭 Guided Workflows (Prompts)
+## Guided Workflows (Prompts)
 
 Pre-built multi-step analyses:
 
@@ -229,21 +229,27 @@ Pre-built multi-step analyses:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-songsage/
+SongSage/
+├── assets/             # Logo and images
+├── heatmaps/           # Generated visualizations
 ├── mcp_server.py       # MCP server implementation
 ├── requirements.txt    # Python dependencies
+├── __init__.py         # Python package init
 ├── .env.example        # Configuration template
 ├── setup.sh            # Linux/macOS installer
-├── heatmaps/           # Generated visualizations
+├── DOCUMENTATION.md    # Extended documentation
+├── INSTALL_LINUX.md    # Linux installation guide
+├── INSTALL_MAC.md      # macOS installation guide
+├── INSTALL_WINDOWS.md  # Windows installation guide
 └── README.md
 ```
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -260,7 +266,7 @@ songsage/
 
 ---
 
-## 🔬 Research Context
+## Research Context
 
 SongSage builds on multimodal wildlife monitoring approaches. The [SmartWilds project](https://imageomics.github.io/naturelab/) demonstrates how bioacoustic sensors complement camera traps and drone imagery for ecosystem monitoring—bioacoustics provide continuous temporal coverage and detect species that visual methods miss.
 
@@ -269,7 +275,7 @@ This tool lowers the barrier for researchers and citizen scientists to explore a
 ---
 
 
-## 📄 License
+## License
 
 MIT License. See [LICENSE](LICENSE) for details.
 
@@ -277,7 +283,7 @@ BirdNET-Analyzer-Sierra is subject to its own [license terms](https://github.com
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [BirdNET Team](https://github.com/birdnet-team) — Cornell Lab of Ornithology & Chemnitz University
 - [Anthropic](https://www.anthropic.com/) — Claude and Model Context Protocol
