@@ -57,6 +57,44 @@ BIRDNET_ANALYZER_DIR = Path(os.getenv('BIRDNET_ANALYZER_DIR', str(DEFAULT_BASE))
 HEATMAP_DIR = SCRIPT_DIR / "heatmaps"
 HEATMAP_DIR.mkdir(parents=True, exist_ok=True)
 
+
+def _get_birdnet_python() -> str:
+    """Find the correct Python interpreter for running BirdNET-Analyzer.
+
+    BirdNET has its own dependencies (TensorFlow, librosa, etc.) that are
+    typically NOT installed in the SongSage venv. Using sys.executable
+    (the SongSage venv Python) would cause ImportErrors.
+
+    Resolution order:
+      1. BIRDNET_PYTHON environment variable (explicit override)
+      2. BirdNET's own venv: {BIRDNET_ANALYZER_DIR}/venv/bin/python3
+      3. System Python: /usr/bin/python3 (Linux/macOS) or python (Windows)
+    """
+    # 1. Explicit override
+    env_python = os.getenv('BIRDNET_PYTHON')
+    if env_python and Path(env_python).exists():
+        return env_python
+
+    # 2. BirdNET's own venv
+    if SYSTEM == "Windows":
+        birdnet_venv_python = BIRDNET_ANALYZER_DIR / "venv" / "Scripts" / "python.exe"
+    else:
+        birdnet_venv_python = BIRDNET_ANALYZER_DIR / "venv" / "bin" / "python3"
+    if birdnet_venv_python.exists():
+        return str(birdnet_venv_python)
+
+    # 3. System Python (where BirdNET deps are typically installed)
+    import shutil
+    system_python = shutil.which("python3") or shutil.which("python")
+    if system_python:
+        return system_python
+
+    # Last resort: current interpreter (may lack BirdNET deps)
+    return sys.executable
+
+
+BIRDNET_PYTHON = _get_birdnet_python()
+
 # Only access CSV files from the results directory
 SUPPORTED_FILE_PATTERN = "*.csv"
 
@@ -1004,7 +1042,7 @@ def analyze_audio(
     
     # Build command
     cmd = [
-        sys.executable,
+        BIRDNET_PYTHON,
         str(analyze_script),
         "--i", str(audio_path),
         "--o", str(RESULTS_DIR),
@@ -1194,7 +1232,7 @@ def analyze_audio_batch(
 
     # Build command for directory analysis
     cmd = [
-        sys.executable,
+        BIRDNET_PYTHON,
         str(analyze_script),
         "--i", str(input_dir),
         "--o", str(RESULTS_DIR),
@@ -1340,7 +1378,7 @@ def analyze_audio_custom(
     rtype = output_format if output_format in ['csv', 'r', 'table', 'audacity', 'kaleidoscope'] else 'csv'
 
     cmd = [
-        sys.executable,
+        BIRDNET_PYTHON,
         str(analyze_script),
         "--i", str(audio_path),
         "--o", str(RESULTS_DIR),
@@ -3104,6 +3142,7 @@ def main():
     print(f"Starting SongSage v2.1.0...", file=sys.stderr)
     print(f"Results directory: {RESULTS_DIR}", file=sys.stderr)
     print(f"Audio directory: {AUDIO_DIR}", file=sys.stderr)
+    print(f"BirdNET Python: {BIRDNET_PYTHON}", file=sys.stderr)
     
     # Pre-load data
     try:

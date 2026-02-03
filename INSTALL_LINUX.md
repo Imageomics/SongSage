@@ -50,14 +50,16 @@ Edit `~/.config/Claude/claude_desktop_config.json`:
   "mcpServers": {
     "songsage": {
       "command": "/home/YOUR_USERNAME/SongSage/venv/bin/python",
-      "args": ["-m", "mcp_server"],
+      "args": ["/home/YOUR_USERNAME/SongSage/mcp_server.py"],
       "cwd": "/home/YOUR_USERNAME/SongSage"
     }
   }
 }
 ```
 
-Replace `YOUR_USERNAME` (run `whoami` to find it).
+Replace `YOUR_USERNAME` with your Linux username (run `whoami` to find it).
+
+> **Important:** All three paths must be **full absolute paths**. Run `pwd` inside the SongSage folder to get the exact path.
 
 Restart Claude Desktop.
 
@@ -71,7 +73,33 @@ BIRDNET_AUDIO_DIR=/path/to/BirdNET-Analyzer-Sierra/recordings
 BIRDNET_ANALYZER_DIR=/path/to/BirdNET-Analyzer-Sierra
 ```
 
+## Verify Your Setup
+
+After restarting Claude Desktop, look for the MCP tools icon (hammer) in the chat input. Type one of these to confirm the connection:
+
+> "List all detected bird species"
+
+If you don't have BirdNET results yet, point your `.env` at the included sample data:
+
+```
+BIRDNET_RESULTS_DIR=/home/YOUR_USERNAME/SongSage/test_data
+```
+
 ## Troubleshooting
+
+**Server won't connect / shows disconnected**
+- Make sure all paths in the config are **full absolute paths** (not `~` or relative)
+- Fully quit and reopen Claude Desktop after config changes
+- Check logs: `~/.config/Claude/logs/mcp-server-songsage.log`
+
+**Broken venv after moving the project folder**
+```bash
+cd /path/to/SongSage
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 **"python3: command not found"**
 ```bash

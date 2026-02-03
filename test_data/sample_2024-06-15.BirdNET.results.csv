@@ -1,0 +1,16 @@
+Start (s),End (s),Scientific name,Common name,Confidence,File
+0,3.0,Cardinalis cardinalis,Northern Cardinal,0.9512,recordings/sample_2024-06-15.wav
+3.0,6.0,Cardinalis cardinalis,Northern Cardinal,0.8834,recordings/sample_2024-06-15.wav
+6.0,9.0,Cyanocitta cristata,Blue Jay,0.7621,recordings/sample_2024-06-15.wav
+9.0,12.0,Turdus migratorius,American Robin,0.9105,recordings/sample_2024-06-15.wav
+12.0,15.0,Turdus migratorius,American Robin,0.8443,recordings/sample_2024-06-15.wav
+15.0,18.0,Zenaida macroura,Mourning Dove,0.6789,recordings/sample_2024-06-15.wav
+18.0,21.0,Cardinalis cardinalis,Northern Cardinal,0.9201,recordings/sample_2024-06-15.wav
+21.0,24.0,Poecile carolinensis,Carolina Chickadee,0.5532,recordings/sample_2024-06-15.wav
+24.0,27.0,Sialia sialis,Eastern Bluebird,0.8876,recordings/sample_2024-06-15.wav
+27.0,30.0,Melanerpes carolinus,Red-bellied Woodpecker,0.7234,recordings/sample_2024-06-15.wav
+30.0,33.0,Haemorhous mexicanus,House Finch,0.4512,recordings/sample_2024-06-15.wav
+33.0,36.0,Cyanocitta cristata,Blue Jay,0.8901,recordings/sample_2024-06-15.wav
+36.0,39.0,Turdus migratorius,American Robin,0.7765,recordings/sample_2024-06-15.wav
+39.0,42.0,Spinus tristis,American Goldfinch,0.6654,recordings/sample_2024-06-15.wav
+42.0,45.0,Cardinalis cardinalis,Northern Cardinal,0.9678,recordings/sample_2024-06-15.wav

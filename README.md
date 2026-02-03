@@ -120,13 +120,15 @@ pip install -r requirements.txt
 
 ### 4. Configure Environment
 
-Create a `.env` file in the project root:
+Create a `.env` file in the project root (or copy from `.env.example`):
 
 ```bash
-BIRDNET_ANALYZER_DIR=/path/to/BirdNET-Analyzer-Sierra
 BIRDNET_RESULTS_DIR=/path/to/BirdNET-Analyzer-Sierra/results
-BIRDNET_AUDIO_DIR=/path/to/audio/files
+BIRDNET_AUDIO_DIR=/path/to/BirdNET-Analyzer-Sierra/recordings
+BIRDNET_ANALYZER_DIR=/path/to/BirdNET-Analyzer-Sierra
 ```
+
+> If BirdNET-Analyzer-Sierra is installed at `~/BirdNET-Analyzer-Sierra`, the server will auto-detect it and a `.env` file is optional.
 
 ### 5. Configure Claude Desktop
 
@@ -138,17 +140,75 @@ Add to your Claude Desktop config:
 | macOS | `~/Library/Application Support/Claude/claude_desktop_config.json` |
 | Windows | `%APPDATA%\Claude\claude_desktop_config.json` |
 
+**macOS / Linux:**
+
 ```json
 {
   "mcpServers": {
     "songsage": {
-      "command": "/path/to/SongSage/venv/bin/python",
-      "args": ["-m", "mcp_server"],
-      "cwd": "/path/to/SongSage"
+      "command": "/full/path/to/SongSage/venv/bin/python",
+      "args": ["/full/path/to/SongSage/mcp_server.py"],
+      "cwd": "/full/path/to/SongSage"
     }
   }
 }
 ```
+
+**Windows:**
+
+```json
+{
+  "mcpServers": {
+    "songsage": {
+      "command": "C:/Users/YOUR_USERNAME/SongSage/venv/Scripts/python.exe",
+      "args": ["C:/Users/YOUR_USERNAME/SongSage/mcp_server.py"],
+      "cwd": "C:/Users/YOUR_USERNAME/SongSage"
+    }
+  }
+}
+```
+
+> **Important:** All three paths (`command`, `args`, and `cwd`) must be **full absolute paths** — no `~`, no relative paths. Run `pwd` (macOS/Linux) or `cd` (Windows) inside the SongSage folder to get the exact path.
+
+---
+
+## Verify Your Setup
+
+After installation, confirm everything is working:
+
+### 1. Use the Sample Test Data
+
+SongSage includes sample BirdNET CSV files in the `test_data/` folder. To test without your own BirdNET results, point your `.env` at the sample data:
+
+```bash
+# In your .env file, temporarily set:
+BIRDNET_RESULTS_DIR=/full/path/to/SongSage/test_data
+```
+
+### 2. Restart Claude Desktop
+
+After editing the config, fully quit and reopen Claude Desktop. Look for the MCP tools icon (hammer icon) in the chat input area — it should show **songsage** as a connected server.
+
+### 3. Test These Prompts in Claude Desktop
+
+Type each of these into Claude Desktop to verify the connection:
+
+**Check if the server is connected:**
+> "List all detected bird species"
+
+Expected: A list of species with detection counts and confidence scores.
+
+**Test filtering:**
+> "Find rare species with confidence above 0.7"
+
+Expected: Species with very few detections and high confidence.
+
+**Test visualization:**
+> "Generate a heatmap of species by time of day"
+
+Expected: A heatmap image displayed directly in the chat.
+
+If any of these fail, check the [Troubleshooting](#troubleshooting) section below.
 
 ---
 
@@ -235,6 +295,7 @@ Pre-built multi-step analyses:
 SongSage/
 ├── assets/             # Logo and images
 ├── heatmaps/           # Generated visualizations
+├── test_data/          # Sample CSV files for setup verification
 ├── mcp_server.py       # MCP server implementation
 ├── requirements.txt    # Python dependencies
 ├── __init__.py         # Python package init
@@ -253,16 +314,51 @@ SongSage/
 
 | Issue | Solution |
 |-------|----------|
-| Server won't start | Verify Python path in Claude config |
-| No data loaded | Check `BIRDNET_RESULTS_DIR` contains CSV files |
-| Heatmaps missing | Ensure `heatmaps/` directory exists |
-| Import errors | Activate venv: `source venv/bin/activate` |
+| Server won't start | Verify all paths in Claude config are **full absolute paths** to the correct locations |
+| No data loaded | Check that `BIRDNET_CSV_FILE` in `.env` points to a directory containing `.csv` files |
+| Heatmaps missing | Ensure `heatmaps/` directory exists: `mkdir -p heatmaps` |
+| Import errors | Activate venv: `source venv/bin/activate` then `pip install -r requirements.txt` |
 
-**Debug logs:**
+### Broken venv after moving the project
 
-- Linux: `~/.config/Claude/logs/`
-- macOS: `~/Library/Logs/Claude/`
-- Windows: `%APPDATA%\Claude\logs\`
+If you moved or renamed the SongSage folder after creating the venv, the venv will break. Recreate it:
+
+```bash
+cd /path/to/SongSage
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate    # macOS/Linux
+pip install -r requirements.txt
+```
+
+Then update all paths in `claude_desktop_config.json` to match the new location.
+
+### Claude Desktop shows server disconnected
+
+1. Fully quit Claude Desktop (not just close the window) and reopen it
+2. Check that the `command` path in your config points to the **venv python**, not the system python
+3. Check the debug logs for error messages (see below)
+
+### MCP tools not generating output
+
+If Claude Desktop connects but tools return errors or no output:
+
+1. Verify your `.env` file has correct paths and the CSV directory is not empty
+2. Ask Claude to `"reload data"` to force a cache refresh
+3. Try a simple query first: `"List all detected species"` — if this works, the server is healthy
+4. Check that the `heatmaps/` directory exists and is writable (needed for visualizations)
+
+### Debug logs
+
+Check the server-specific log for detailed error messages:
+
+| Platform | Log location |
+|----------|-------------|
+| Linux | `~/.config/Claude/logs/mcp-server-songsage.log` |
+| macOS | `~/Library/Logs/Claude/mcp-server-songsage.log` |
+| Windows | `%APPDATA%\Claude\logs\mcp-server-songsage.log` |
+
+General MCP and Claude Desktop logs are in the same directory (`mcp.log`, `main.log`).
 
 ---
 

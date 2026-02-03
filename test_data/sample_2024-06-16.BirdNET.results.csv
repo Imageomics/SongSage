@@ -1,0 +1,13 @@
+Start (s),End (s),Scientific name,Common name,Confidence,File
+0,3.0,Turdus migratorius,American Robin,0.9321,recordings/sample_2024-06-16.wav
+3.0,6.0,Cardinalis cardinalis,Northern Cardinal,0.8112,recordings/sample_2024-06-16.wav
+6.0,9.0,Corvus brachyrhynchos,American Crow,0.7543,recordings/sample_2024-06-16.wav
+9.0,12.0,Zenaida macroura,Mourning Dove,0.8890,recordings/sample_2024-06-16.wav
+12.0,15.0,Sialia sialis,Eastern Bluebird,0.9234,recordings/sample_2024-06-16.wav
+15.0,18.0,Cyanocitta cristata,Blue Jay,0.6712,recordings/sample_2024-06-16.wav
+18.0,21.0,Mimus polyglottos,Northern Mockingbird,0.8567,recordings/sample_2024-06-16.wav
+21.0,24.0,Haemorhous mexicanus,House Finch,0.5123,recordings/sample_2024-06-16.wav
+24.0,27.0,Turdus migratorius,American Robin,0.8998,recordings/sample_2024-06-16.wav
+27.0,30.0,Poecile carolinensis,Carolina Chickadee,0.7456,recordings/sample_2024-06-16.wav
+30.0,33.0,Pipilo erythrophthalmus,Eastern Towhee,0.3210,recordings/sample_2024-06-16.wav
+33.0,36.0,Cardinalis cardinalis,Northern Cardinal,0.9445,recordings/sample_2024-06-16.wav
