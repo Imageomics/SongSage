@@ -87,6 +87,8 @@ flowchart TB
 
 ## Installation
 
+> **Platform-specific guides:** [Linux](INSTALL_LINUX.md) | [macOS](INSTALL_MAC.md) | [Windows](INSTALL_WINDOWS.md)
+
 ### 1. Clone the Repository
 
 ```bash
@@ -305,6 +307,7 @@ SongSage/
 ├── INSTALL_LINUX.md    # Linux installation guide
 ├── INSTALL_MAC.md      # macOS installation guide
 ├── INSTALL_WINDOWS.md  # Windows installation guide
+├── WINDOWS_QUICK_FIX.md # Windows Git Bash troubleshooting
 └── README.md
 ```
 
@@ -385,3 +388,5 @@ BirdNET-Analyzer-Sierra is subject to its own [license terms](https://github.com
 - [Anthropic](https://www.anthropic.com/) — Claude and Model Context Protocol
 - [The Wilds Conservation Center](https://thewilds.org/)
 - SmartWilds Team, The Ohio State University
+
+This work was supported in part by the [NSF AI Institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE)](https://aiira.iastate.edu/), funded under NSF Award OAC-2112606.

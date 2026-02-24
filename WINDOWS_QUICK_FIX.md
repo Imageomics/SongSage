@@ -14,7 +14,7 @@ The `setup.sh` script is for Linux/Mac. It won't work in Git Bash on Windows.
 Don't use Git Bash. Use Command Prompt or PowerShell instead:
 
 ```cmd
-cd %USERPROFILE%\Downloads\birdnet-sierra-mcp
+cd %USERPROFILE%\SongSage
 venv\Scripts\activate
 pip install -r requirements.txt
 mkdir heatmaps

@@ -1,4 +1,4 @@
-# BirdNET Sierra MCP Server - Comprehensive Documentation
+# SongSage - Comprehensive Documentation
 
 **Version:** 2.1.0
 **Platform:** Cross-platform (Linux, macOS, Windows)
@@ -28,7 +28,7 @@
 
 ## Overview
 
-BirdNET Sierra MCP Server is a Model Context Protocol (MCP) server that bridges BirdNET-Analyzer with Claude Desktop. It enables natural language interaction with bird detection data, allowing users to:
+SongSage is a Model Context Protocol (MCP) server that bridges BirdNET-Analyzer with Claude Desktop. It enables natural language interaction with bird detection data, allowing users to:
 
 - Analyze audio recordings for bird species identification
 - Query detection results with flexible filtering
@@ -159,7 +159,7 @@ MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI assi
 ### System Components
 
 ```
-birdnet-sierra-mcp/
+SongSage/
 │
 ├── mcp_server.py          # Main server implementation (~3,100 lines)
 │   ├── Configuration      # Path detection, environment loading
@@ -258,6 +258,7 @@ python-dotenv>=1.0.0
 | `.env` | User configuration (not in repo) |
 | `setup.sh` | Automated setup script for Linux/macOS |
 | `README.md` | Quick start documentation |
+| `INSTALL_LINUX.md` | Linux installation guide |
 | `INSTALL_MAC.md` | macOS installation guide |
 | `INSTALL_WINDOWS.md` | Windows installation guide |
 | `WINDOWS_QUICK_FIX.md` | Windows troubleshooting |
@@ -275,85 +276,13 @@ python-dotenv>=1.0.0
 
 ## Installation
 
-### Prerequisites
+For complete, platform-specific installation instructions see the dedicated guides:
 
-1. **Python 3.10+** - Required runtime
-2. **BirdNET-Analyzer-Sierra** - Must be installed separately
-3. **Claude Desktop** - User interface
+- [Linux installation guide](INSTALL_LINUX.md)
+- [macOS installation guide](INSTALL_MAC.md)
+- [Windows installation guide](INSTALL_WINDOWS.md)
 
-### Quick Install
-
-**Linux/macOS:**
-```bash
-cd ~/birdnet-sierra-mcp
-chmod +x setup.sh
-./setup.sh
-```
-
-**Windows (Command Prompt):**
-```cmd
-cd %USERPROFILE%\Downloads\birdnet-sierra-mcp
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-mkdir heatmaps
-```
-
-### Manual Installation Steps
-
-1. **Extract files** to preferred location
-2. **Create virtual environment:**
-   ```bash
-   python3 -m venv venv
-   ```
-3. **Activate environment:**
-   - Linux/macOS: `source venv/bin/activate`
-   - Windows CMD: `venv\Scripts\activate.bat`
-   - Windows PowerShell: `venv\Scripts\Activate.ps1`
-4. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-5. **Create heatmaps directory:**
-   ```bash
-   mkdir heatmaps
-   ```
-
-### Claude Desktop Configuration
-
-Edit the configuration file at:
-
-| Platform | Path |
-|----------|------|
-| Linux | `~/.config/Claude/claude_desktop_config.json` |
-| macOS | `~/Library/Application Support/Claude/claude_desktop_config.json` |
-| Windows | `%APPDATA%\Claude\claude_desktop_config.json` |
-
-**Configuration Format:**
-```json
-{
-  "mcpServers": {
-    "birdnet": {
-      "command": "/home/USERNAME/birdnet-sierra-mcp/venv/bin/python",
-      "args": ["-m", "mcp_server"],
-      "cwd": "/home/USERNAME/birdnet-sierra-mcp"
-    }
-  }
-}
-```
-
-**Windows paths use forward slashes:**
-```json
-{
-  "mcpServers": {
-    "birdnet": {
-      "command": "C:/Users/USERNAME/birdnet-sierra-mcp/venv/Scripts/python.exe",
-      "args": ["-m", "mcp_server"],
-      "cwd": "C:/Users/USERNAME/birdnet-sierra-mcp"
-    }
-  }
-}
-```
+For a quick start overview, see the [README.md — Installation section](README.md#installation).
 
 ---
 
@@ -361,21 +290,7 @@ Edit the configuration file at:
 
 ### Environment Variables
 
-Create a `.env` file in the project root (copy from `.env.example`):
-
-```bash
-# BirdNET Results Directory
-# Where BirdNET saves detection CSV files
-BIRDNET_RESULTS_DIR=/home/username/BirdNET-Analyzer-Sierra/results
-
-# Audio Files Directory
-# Where source audio recordings are stored
-BIRDNET_AUDIO_DIR=/home/username/BirdNET-Analyzer-Sierra/recordings
-
-# BirdNET Analyzer Directory
-# Root installation of BirdNET-Analyzer
-BIRDNET_ANALYZER_DIR=/home/username/BirdNET-Analyzer-Sierra
-```
+See the [README.md — Configure Environment](README.md#4-configure-environment) section for environment variable details and examples.
 
 ### Auto-Detection Paths
 
@@ -859,7 +774,7 @@ The server automatically detects and converts between formats.
 ```python
 from mcp.server.fastmcp import FastMCP, Image
 
-mcp = FastMCP("birdnet-mcp")
+mcp = FastMCP("songsage")
 ```
 
 ### Tool Definition Pattern
