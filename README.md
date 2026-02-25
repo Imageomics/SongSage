@@ -207,5 +207,3 @@ BirdNET-Analyzer-Sierra is subject to its own [license terms](https://github.com
 - [Anthropic](https://www.anthropic.com/) — Claude and Model Context Protocol
 - [The Wilds Conservation Center](https://thewilds.org/)
 - SmartWilds Team, The Ohio State University
-
-This work was supported in part by the [NSF AI Institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE)](https://aiira.iastate.edu/), funded under NSF Award OAC-2112606.
