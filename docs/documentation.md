@@ -1,6 +1,6 @@
-# SongSage - Comprehensive Documentation
+# SongSage Reference
 
-**Version:** 2.1.0
+**Version:** 1.0.0
 **Platform:** Cross-platform (Linux, macOS, Windows)
 **Python:** 3.10+
 
@@ -13,16 +13,12 @@
 3. [What is MCP (Model Context Protocol)?](#what-is-mcp-model-context-protocol)
 4. [Architecture](#architecture)
 5. [Technology Stack](#technology-stack)
-6. [Project Structure](#project-structure)
-7. [Installation](#installation)
-8. [Configuration](#configuration)
-9. [Tools Reference](#tools-reference)
-10. [Resources Reference](#resources-reference)
-11. [Prompts Reference](#prompts-reference)
-12. [Data Handling](#data-handling)
-13. [Visualization System](#visualization-system)
-14. [API Reference](#api-reference)
-15. [Troubleshooting](#troubleshooting)
+6. [Tools Reference](#tools-reference)
+7. [Resources Reference](#resources-reference)
+8. [Prompts Reference](#prompts-reference)
+9. [Data Handling](#data-handling)
+10. [Visualization System](#visualization-system)
+11. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -61,11 +57,7 @@ SongSage is a Model Context Protocol (MCP) server that bridges BirdNET-Analyzer 
 
 ## What is BirdNET?
 
-### Overview
-
 BirdNET-Analyzer is an AI-powered acoustic bird detection system developed by the Cornell Lab of Ornithology and Chemnitz University of Technology. It uses deep learning neural networks to identify bird species from their vocalizations in audio recordings.
-
-### Key Features
 
 | Feature | Description |
 |---------|-------------|
@@ -101,41 +93,7 @@ BirdNET-Analyzer is an AI-powered acoustic bird detection system developed by th
 
 ## What is MCP (Model Context Protocol)?
 
-### Overview
-
 MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI assistants to external tools and data sources. It allows Claude to interact with local systems, databases, APIs, and applications in a standardized way.
-
-### MCP Architecture
-
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                        Claude Desktop                            │
-│  ┌────────────────────────────────────────────────────────────┐  │
-│  │                    Claude AI Model                          │  │
-│  └────────────────────────────────────────────────────────────┘  │
-│                              │                                    │
-│                              │ JSON-RPC (stdio)                   │
-│                              ▼                                    │
-│  ┌────────────────────────────────────────────────────────────┐  │
-│  │                     MCP Client                              │  │
-│  └────────────────────────────────────────────────────────────┘  │
-└──────────────────────────────────────────────────────────────────┘
-                               │
-                               │ JSON-RPC Protocol
-                               ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                      MCP Server (This Project)                   │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐           │
-│  │    Tools     │  │  Resources   │  │   Prompts    │           │
-│  │  (Actions)   │  │ (Data Read)  │  │ (Workflows)  │           │
-│  └──────────────┘  └──────────────┘  └──────────────┘           │
-│                              │                                    │
-│                              ▼                                    │
-│  ┌────────────────────────────────────────────────────────────┐  │
-│  │              Local Filesystem / BirdNET Data                │  │
-│  └────────────────────────────────────────────────────────────┘  │
-└──────────────────────────────────────────────────────────────────┘
-```
 
 ### MCP Components
 
@@ -156,30 +114,28 @@ MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI assi
 
 ## Architecture
 
-### System Components
-
 ```
 SongSage/
 │
-├── mcp_server.py          # Main server implementation (~3,100 lines)
+├── mcp_server.py          # Main server implementation
 │   ├── Configuration      # Path detection, environment loading
 │   ├── Data Caching       # Smart cache with modification tracking
 │   ├── Column Mapping     # Dynamic column detection (50+ aliases)
 │   ├── Data Loading       # CSV parsing, format conversion
-│   ├── Tools (24)         # Audio analysis, queries, visualization
-│   ├── Resources (5)      # Read-only data access
-│   └── Prompts (15+)      # Guided workflows
+│   ├── Tools              # Audio analysis, queries, visualization
+│   ├── Resources          # Read-only data access
+│   └── Prompts            # Guided workflows
 │
-├── __init__.py            # Package initialization, version info
+├── __init__.py            # Package initialization
 ├── requirements.txt       # Python dependencies
-├── .env.example          # Configuration template
-├── setup.sh              # Linux/macOS installer
+├── .env.example           # Configuration template
+├── setup.sh               # Linux/macOS installer
+├── docs/                  # Documentation
+│   ├── installation.md    # Installation and configuration guide
+│   └── documentation.md   # This file
 │
-├── heatmaps/             # Generated visualization output
-│   └── *.png             # Timestamped heatmap images
-│
-└── venv/                 # Python virtual environment
-    └── ...               # Installed packages
+├── heatmaps/              # Generated visualization output
+└── test_data/             # Sample CSV files
 ```
 
 ### Data Flow
@@ -193,22 +149,32 @@ SongSage/
 
 ### Caching Strategy
 
+Cache is invalidated whenever any CSV file in `RESULTS_DIR` is modified since the last load:
+
 ```python
-# Cache invalidation logic
 _data_cache: Optional[pd.DataFrame] = None
 _cache_file_mtimes: dict[str, float] = {}
 
 def _is_cache_valid() -> bool:
-    # Check if any CSV file was modified since last load
     current_mtimes = _get_csv_file_mtimes()
     return current_mtimes == _cache_file_mtimes
+```
+
+### Expected BirdNET Directory Structure
+
+```
+BirdNET-Analyzer-Sierra/
+├── results/              # CSV detection files (auto-scanned)
+│   ├── recording1.csv
+│   └── ...
+├── recordings/           # Audio files for analysis
+│   └── birds.wav
+└── analyze.py            # BirdNET analyzer script
 ```
 
 ---
 
 ## Technology Stack
-
-### Core Technologies
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
@@ -219,108 +185,11 @@ def _is_cache_valid() -> bool:
 | **numpy** | 1.24.0+ | Numerical computing |
 | **python-dotenv** | 1.0.0+ | Environment configuration |
 
-### Python Standard Library Usage
-
-| Module | Usage |
-|--------|-------|
-| `pathlib` | Cross-platform file path handling |
-| `datetime` | Date/time parsing and formatting |
-| `subprocess` | Running BirdNET analyzer |
-| `json` | Data serialization |
-| `platform` | OS detection for path defaults |
-| `glob` | File pattern matching |
-| `traceback` | Error logging |
-| `re` | Regular expressions for parsing |
-
-### External Dependencies
-
-**requirements.txt:**
-```
-mcp>=1.0.0
-pandas>=2.0.0
-matplotlib>=3.7.0
-numpy>=1.24.0
-python-dotenv>=1.0.0
-```
-
----
-
-## Project Structure
-
-### File Descriptions
-
-| File | Purpose |
-|------|---------|
-| `mcp_server.py` | Main server with all tools, resources, and prompts |
-| `__init__.py` | Package marker with version number |
-| `requirements.txt` | Python package dependencies |
-| `.env.example` | Configuration template with examples |
-| `.env` | User configuration (not in repo) |
-| `setup.sh` | Automated setup script for Linux/macOS |
-| `README.md` | Quick start documentation |
-| `INSTALL_LINUX.md` | Linux installation guide |
-| `INSTALL_MAC.md` | macOS installation guide |
-| `INSTALL_WINDOWS.md` | Windows installation guide |
-| `WINDOWS_QUICK_FIX.md` | Windows troubleshooting |
-| `heatmaps/` | Generated visualization output directory |
-
-### Generated Files
-
-| Location | Content |
-|----------|---------|
-| `heatmaps/*.png` | Generated heatmap visualizations |
-| `venv/` | Python virtual environment |
-| `__pycache__/` | Compiled Python bytecode |
-
----
-
-## Installation
-
-For complete, platform-specific installation instructions see the dedicated guides:
-
-- [Linux installation guide](INSTALL_LINUX.md)
-- [macOS installation guide](INSTALL_MAC.md)
-- [Windows installation guide](INSTALL_WINDOWS.md)
-
-For a quick start overview, see the [README.md — Installation section](README.md#installation).
-
----
-
-## Configuration
-
-### Environment Variables
-
-See the [README.md — Configure Environment](README.md#4-configure-environment) section for environment variable details and examples.
-
-### Auto-Detection Paths
-
-If no `.env` file exists, paths are auto-detected:
-
-| Platform | Default Path |
-|----------|--------------|
-| Linux | `~/BirdNET-Analyzer-Sierra` (preferred) or `~/BirdNET-Analyzer` |
-| macOS | `~/BirdNET-Analyzer` |
-| Windows | `C:\Users\{username}\BirdNET-Analyzer-Sierra` |
-
-### Directory Structure Expected
-
-```
-BirdNET-Analyzer-Sierra/
-├── results/              # CSV detection files (auto-scanned)
-│   ├── recording1.csv
-│   ├── recording2.csv
-│   └── ...
-├── recordings/           # Audio files for analysis
-│   ├── birds.wav
-│   └── ...
-└── analyze.py            # BirdNET analyzer script
-```
-
 ---
 
 ## Tools Reference
 
-### Audio Analysis Tools (4)
+### Audio Analysis Tools
 
 #### `analyze_audio`
 
@@ -337,9 +206,7 @@ Analyze a single audio file with BirdNET.
 | `week` | int | None | Week of year (1-48) for seasonal filtering |
 | `locale` | string | "en" | Language locale for species names |
 
-**Timeout:** 5 minutes
-
-**Returns:** Detection summary with species list, counts, and confidence statistics.
+**Timeout:** 5 minutes. **Returns:** Detection summary with species list, counts, and confidence statistics.
 
 ---
 
@@ -355,7 +222,7 @@ Batch analyze multiple audio files.
 | `combine_results` | bool | False | Combine all results into single file |
 | `threads` | int | 4 | Number of parallel threads |
 
-**Timeout:** 1 hour
+**Timeout:** 1 hour.
 
 ---
 
@@ -384,7 +251,7 @@ List available audio files for analysis.
 
 ---
 
-### Data Query Tools (7)
+### Data Query Tools
 
 #### `list_detected_species`
 
@@ -476,7 +343,7 @@ Detailed confidence statistics per species.
 
 ---
 
-### Visualization Tools (5)
+### Visualization Tools
 
 #### `generate_heatmap`
 
@@ -516,7 +383,7 @@ Generate activity pattern heatmaps.
 
 #### `generate_heatmap_dynamic`
 
-Create fully customizable heatmaps from any CSV.
+Create fully customizable heatmaps from any CSV column combination.
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
@@ -569,15 +436,13 @@ Generate heatmaps from wide-format CSVs (species as columns).
 
 List available color schemes (45+ options).
 
-**Categories:**
-
 | Category | Examples | Best For |
 |----------|----------|----------|
 | Sequential | viridis, plasma, YlOrRd | Single variable intensity |
 | Diverging | RdBu, coolwarm | Values around a center point |
 | Qualitative | Set1, tab10 | Categorical data |
 
-**Colorblind-Friendly:** viridis, cividis, plasma
+Colorblind-friendly options: viridis, cividis, plasma.
 
 ---
 
@@ -587,7 +452,7 @@ List all heatmap types with descriptions and recommended use cases.
 
 ---
 
-### Utility Tools (5)
+### Utility Tools
 
 #### `reload_data`
 
@@ -601,12 +466,7 @@ Force reload all CSV data from disk, clearing the cache.
 
 Analyze CSV file structure and format.
 
-**Returns:**
-- Row and column counts
-- Detected format (wide vs long)
-- Column mappings
-- Species columns (for wide format)
-- Sample datetime values
+**Returns:** Row/column counts, detected format (wide vs long), column mappings, species columns (wide format), sample datetime values.
 
 ---
 
@@ -728,7 +588,7 @@ The server automatically detects and converts between formats.
 ### Data Normalization
 
 1. **Date Extraction:** Parses dates from filenames (`2024-01-15_recording.csv`)
-2. **Time Categorization:** Converts seconds to time of day periods
+2. **Time Categorization:** Converts seconds to time of day periods (Morning/Afternoon/Evening/Night)
 3. **Confidence Filtering:** Applies minimum confidence thresholds
 4. **Species Matching:** Case-insensitive partial matching
 
@@ -738,13 +598,13 @@ The server automatically detects and converts between formats.
 
 ### Heatmap Generation Pipeline
 
-1. **Data Loading:** Load and filter data based on parameters
-2. **Pivoting:** Create pivot table with row/column/value
-3. **Sorting:** Order by value or name
-4. **Truncation:** Limit to top N items
-5. **Rendering:** Generate matplotlib figure
-6. **Saving:** Save to `heatmaps/` with timestamp
-7. **Return:** MCP Image object for Claude Desktop
+1. Load and filter data based on parameters
+2. Create pivot table with row/column/value
+3. Order rows/columns by value or name
+4. Limit to top N items
+5. Generate matplotlib figure
+6. Save to `heatmaps/` with timestamp
+7. Return MCP Image object for Claude Desktop
 
 ### Output Specifications
 
@@ -767,119 +627,14 @@ The server automatically detects and converts between formats.
 
 ---
 
-## API Reference
-
-### Server Initialization
-
-```python
-from mcp.server.fastmcp import FastMCP, Image
-
-mcp = FastMCP("songsage")
-```
-
-### Tool Definition Pattern
-
-```python
-@mcp.tool()
-def tool_name(
-    required_param: str,
-    optional_param: float = 0.5
-) -> str:
-    """Tool description for Claude."""
-    # Implementation
-    return json.dumps(result)
-```
-
-### Resource Definition Pattern
-
-```python
-@mcp.resource("birdnet://data/resource-name")
-def resource_function() -> str:
-    """Resource description."""
-    return json.dumps(data)
-```
-
-### Prompt Definition Pattern
-
-```python
-@mcp.prompt()
-def prompt_name(param: str) -> str:
-    """Prompt description."""
-    return f"Instructions for Claude with {param}"
-```
-
----
-
 ## Troubleshooting
-
-### Common Issues
 
 | Issue | Solution |
 |-------|----------|
-| **Server not starting** | Check Python path in Claude config |
-| **No data loaded** | Verify RESULTS_DIR path, check for CSV files |
-| **Heatmap not displaying** | Ensure `heatmaps/` directory exists |
-| **"Module not found"** | Activate venv, reinstall requirements |
-| **Windows path issues** | Use forward slashes in config |
+| **Server not starting** | Verify all paths in Claude config are full absolute paths |
+| **No data loaded** | Check that `BIRDNET_RESULTS_DIR` points to a directory with `.csv` files |
+| **Heatmap not displaying** | Ensure `heatmaps/` directory exists and is writable |
+| **"Module not found"** | Activate venv and reinstall: `pip install -r requirements.txt` |
+| **Windows path issues** | Use forward slashes `/` in config JSON |
 
-### Platform-Specific Issues
-
-**macOS Apple Silicon:**
-```bash
-pip install tensorflow-macos tensorflow-metal
-```
-
-**Windows PowerShell:**
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-**Linux permissions:**
-```bash
-chmod +x setup.sh
-```
-
-### Debugging
-
-Check Claude Desktop logs:
-- Linux: `~/.config/Claude/logs/`
-- macOS: `~/Library/Logs/Claude/`
-- Windows: `%APPDATA%\Claude\logs\`
-
-Enable verbose output by checking server stderr in logs.
-
----
-
-## Version History
-
-| Version | Changes |
-|---------|---------|
-| 2.1.0 | Current version - Full heatmap support, wide format handling |
-| 2.0.0 | Added visualization tools, dynamic column mapping |
-| 1.0.0 | Initial release - Basic query tools |
-
----
-
-## License
-
-This project is provided for use with BirdNET-Analyzer and Claude Desktop. See BirdNET-Analyzer license for AI model usage terms.
-
----
-
-## Contributing
-
-Contributions welcome. Please follow these guidelines:
-1. Maintain cross-platform compatibility
-2. Add appropriate error handling
-3. Update documentation for new features
-4. Test with both wide and long format CSVs
-
----
-
-## Support
-
-For issues and questions:
-1. Check this documentation
-2. Review Claude Desktop logs
-3. Verify BirdNET-Analyzer installation
-4. Check CSV file format compatibility
+See [installation.md](installation.md) for platform-specific troubleshooting and log locations.
