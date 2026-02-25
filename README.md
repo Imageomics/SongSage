@@ -170,7 +170,7 @@ Pre-built multi-step analyses:
 
 ```
 SongSage/
-├── assets/             # Logo and images
+├── assets/             # Logo 
 ├── docs/               # Documentation
 │   ├── installation.md  # Installation and configuration guide
 │   └── documentation.md # Full technical reference
