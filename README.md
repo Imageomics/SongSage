@@ -206,7 +206,7 @@ BirdNET-Analyzer-Sierra is subject to its own [license terms](https://github.com
 - [BirdNET Team](https://github.com/birdnet-team) — Cornell Lab of Ornithology & Chemnitz University
 - [Anthropic](https://www.anthropic.com/) — Claude and Model Context Protocol
 - [The Wilds Conservation Center](https://thewilds.org/)
-- [Imageomics Institute](https://imageomics.org/) & [ABC Global Center](https://abcglobalcenter.org/)
-- - SmartWilds Team, The Ohio State University
+- [Imageomics Institute](https://imageomics.org/) & [ABC Global Center]([https://abcglobalcenter.org/](https://imageomics.osu.edu/events/2023/11/introducing-ai-and-biodiversity-change-global-climate-center))
+- SmartWilds Team, The Ohio State University
 
 This work was supported in part by the [NSF AI Institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE)](https://aiira.iastate.edu/), funded under NSF Award OAC-2112606.
