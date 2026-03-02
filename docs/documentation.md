@@ -94,6 +94,7 @@ BirdNET-Analyzer is an AI-powered acoustic bird detection system developed by th
 ## What is MCP (Model Context Protocol)?
 
 MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI assistants to external tools and data sources. It allows Claude to interact with local systems, databases, APIs, and applications in a standardized way.
+Learn More: Model Context Protocol Documentation
 
 ### MCP Components
 
