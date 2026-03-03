@@ -11,7 +11,7 @@
 1. [Overview](#overview)
 2. [What is BirdNET?](#what-is-birdnet)
 3. [What is MCP (Model Context Protocol)?](#what-is-mcp-model-context-protocol)
-4. [Architecture](#architecture)
+4. [Project Structure](#project-structure)
 5. [Technology Stack](#technology-stack)
 6. [Tools Reference](#tools-reference)
 7. [Resources Reference](#resources-reference)
@@ -24,7 +24,7 @@
 
 ## Overview
 
-SongSage is a Model Context Protocol (MCP) server that bridges BirdNET-Analyzer with Claude Desktop. It enables natural language interaction with bird detection data, allowing users to:
+SongSage is a Model Context Protocol (MCP) server that bridges [BirdNET-Analyzer Sierra](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra) with [Claude Desktop](https://code.claude.com/docs/en/desktop). It enables natural language interaction with bird detection data, allowing users to:
 
 - Analyze audio recordings for bird species identification
 - Query detection results with flexible filtering
@@ -57,7 +57,7 @@ SongSage is a Model Context Protocol (MCP) server that bridges BirdNET-Analyzer 
 
 ## What is BirdNET?
 
-BirdNET-Analyzer is an AI-powered acoustic bird detection system developed by the Cornell Lab of Ornithology and Chemnitz University of Technology. It uses deep learning neural networks to identify bird species from their vocalizations in audio recordings.
+[BirdNET-Analyzer Sierra](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra) is an AI-powered acoustic bird detection system developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/) at [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home) with [Chemnitz University of Technology](https://www.tu-chemnitz.de/index.html). It uses deep learning neural networks to identify bird species from their vocalizations in audio recordings.
 
 | Feature | Description |
 |---------|-------------|
@@ -94,6 +94,8 @@ BirdNET-Analyzer is an AI-powered acoustic bird detection system developed by th
 ## What is MCP (Model Context Protocol)?
 
 MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI assistants to external tools and data sources. It allows Claude to interact with local systems, databases, APIs, and applications in a standardized way.
+
+#### Learn More: [Model Context Protocol Documentation](https://modelcontextprotocol.io)
 
 ### MCP Components
 
@@ -140,12 +142,12 @@ SongSage/
 
 ### Data Flow
 
-1. **Input:** CSV files from BirdNET-Analyzer in `results/` directory
+1. **Input:** CSV files containing bird detection data. Expected columns include species name, confidence score, timestamp, latitude/longitude, and optionally file path or recording metadata. Supports both wide format (one row per audio file) and long format (one row per detection). See the [`test_data/`](../test_data) directory for examples. For details on BirdNET's output formats and CLI options, see the [BirdNET-Analyzer Sierra documentation](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra).
 2. **Loading:** Automatic detection of file format (wide vs long)
 3. **Normalization:** Column mapping to standard names
 4. **Caching:** In-memory DataFrame with modification tracking
 5. **Query:** Tools filter/aggregate data based on parameters
-6. **Output:** JSON responses or PNG visualizations
+6. **Output:** JSON responses (e.g., species counts, temporal activity patterns, confidence statistics) or PNG visualizations (e.g., heatmaps, activity charts)
 
 ### Caching Strategy
 

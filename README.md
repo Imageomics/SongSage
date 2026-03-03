@@ -170,17 +170,17 @@ Pre-built multi-step analyses:
 
 ```
 SongSage/
-├── assets/             # Logo 
-├── docs/               # Documentation
-│   ├── installation.md  # Installation and configuration guide
-│   └── documentation.md # Full technical reference
-├── heatmaps/           # Generated visualizations
-├── test_data/          # Sample CSV files for setup verification
-├── mcp_server.py       # MCP server implementation
-├── requirements.txt    # Python dependencies
-├── __init__.py         # Python package init
-├── .env.example        # Configuration template
-└── setup.sh            # Linux/macOS installer
+├── assets/               # Logo 
+├── docs/                 # Documentation
+│   ├── documentation.md  # Full technical reference
+│   └── installation.md   # Installation and configuration guide
+├── heatmaps/             # Generated visualizations
+├── test_data/            # Sample CSV files for setup verification (see installation guide)
+├── mcp_server.py         # MCP server implementation
+├── requirements.txt      # Python dependencies
+├── __init__.py           # Python package init
+├── .env.example          # Configuration template
+└── setup.sh              # Linux/macOS installer
 ```
 
 ---
@@ -193,20 +193,12 @@ This tool lowers the barrier for researchers and citizen scientists to explore a
 
 ---
 
-## License
-
-MIT License. See [LICENSE](LICENSE) for details.
-
-BirdNET-Analyzer-Sierra is subject to its own [license terms](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra).
-
----
-
 ## Acknowledgments
 
 - [BirdNET Team](https://github.com/birdnet-team) — Cornell Lab of Ornithology & Chemnitz University
 - [Anthropic](https://www.anthropic.com/) — Claude and Model Context Protocol
 - [The Wilds Conservation Center](https://thewilds.org/)
-- [Imageomics Institute](https://imageomics.org/) & [ABC Global Center](https://imageomics.osu.edu/events/2023/11/introducing-ai-and-biodiversity-change-global-climate-center)
-- SmartWilds Team, The Ohio State University
+- [Imageomics Institute](https://imageomics.org/) & [ABC Global Center](http://abcresearchcenter.org/)
+- SmartWilds Team, The Ohio State University and [The Wilds](https://www.thewilds.org/)
 
-This work was supported in part by the [NSF AI Institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE)](https://aiira.iastate.edu/), funded under NSF Award OAC-2112606.
+This work was supported by both the [Imageomics Institute](https://imageomics.org) and the [AI and Biodiversity Change (ABC) Global Center](http://abcresearchcenter.org). The Imageomics Institute is funded by the US National Science Foundation's Harnessing the Data Revolution (HDR) program under [Award #2118240](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2118240) (Imageomics: A New Frontier of Biological Information Powered by Knowledge-Guided Machine Learning). The ABC Global Center is funded by the US National Science Foundation under [Award No. 2330423](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2330423&HistoricalAwards=false) and Natural Sciences and Engineering Research Council of Canada under [Award No. 585136](https://www.nserc-crsng.gc.ca/ase-oro/Details-Detailles_eng.asp?id=782440). This project draws on research supported by the Social Sciences and Humanities Research Council. Some additional support was provided by the [NSF AI Institute for Intelligent Cyberinfrastructure with Computational Learning in the Environment (ICICLE)](https://aiira.iastate.edu/), funded under NSF Award OAC-2112606. Any opinions, findings and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation, Natural Sciences and Engineering Research Council of Canada, or Social Sciences and Humanities Research Council.

@@ -4,14 +4,14 @@
 
 - **Python 3.10+** — [python.org](https://www.python.org/downloads/)
   - Windows: check "Add Python to PATH" during installation
-- **BirdNET-Analyzer-Sierra** — must be installed and accessible on your system
+- **BirdNET-Analyzer-Sierra** — must be installed and accessible on your system (see [their repo](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra))
 - **Claude Desktop** — [claude.ai/download](https://claude.ai/download)
 
 ---
 
 ## Installation
 
-### 1. Clone the repository
+### 1. Clone this repository
 
 ```bash
 git clone https://github.com/Imageomics/SongSage.git
@@ -45,7 +45,8 @@ pip install -r requirements.txt
 mkdir heatmaps
 ```
 
-> **Windows note:** The `setup.sh` script is for Mac/Linux only. Do not run it in Git Bash — use Command Prompt or PowerShell instead.
+> [!NOTE]
+> **Windows:** The `setup.sh` script is for Mac/Linux only. Do not run it in Git Bash — use Command Prompt or PowerShell instead.
 
 ---
 
@@ -53,7 +54,7 @@ mkdir heatmaps
 
 ### Mac/Linux Configuration
 
-Edit `~/.config/Claude/claude_desktop_config.json` (Linux) or `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS):
+Edit your Claude Desktop configuration JSON: `~/.config/Claude/claude_desktop_config.json` (Linux) or `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS):
 
 ```json
 {
@@ -87,13 +88,13 @@ Edit `%APPDATA%\Claude\claude_desktop_config.json`:
 
 Replace `YOUR_USERNAME` with your Windows username and use forward slashes `/` in paths. Run `cd` inside the SongSage folder to see the exact path.
 
-> **Important (all platforms):** All three paths (`command`, `args`, `cwd`) must be **full absolute paths** — no `~`, no relative paths.
-
-Restart Claude Desktop after editing.
+> [!IMPORTANT]
+> **All Platforms:** All three paths (`command`, `args`, `cwd`) must be **full absolute paths** — no `~`, no relative paths.
+> Restart Claude Desktop after editing.
 
 ### Optional: Configure BirdNET Paths
 
-If BirdNET-Analyzer-Sierra isn't auto-detected (it looks for `~/BirdNET-Analyzer-Sierra` or `~/BirdNET-Analyzer`), create a `.env` file in the SongSage folder. See `.env.example` for a template:
+If BirdNET-Analyzer-Sierra isn't auto-detected (it looks for `~/BirdNET-Analyzer-Sierra` or `~/BirdNET-Analyzer`), create a `.env` file in the SongSage folder. See [`.env.example`](../.env.example) for a template:
 
 **Mac/Linux:**
 ```
@@ -120,11 +121,14 @@ After restarting Claude Desktop, look for the MCP tools icon (hammer) in the cha
 If you don't have BirdNET results yet, point your `.env` at the included sample data:
 
 **Mac/Linux:** `BIRDNET_RESULTS_DIR=/path/to/SongSage/test_data`
+
 **Windows:** `BIRDNET_RESULTS_DIR=C:/path/to/SongSage/test_data`
 
 ---
 
 ## Troubleshooting
+
+Below we list some commonly encountered issues, and highlight those that are OS-specific.
 
 ### Server won't connect / shows disconnected
 
