@@ -24,7 +24,7 @@
 
 ## Overview
 
-SongSage is a Model Context Protocol (MCP) server that bridges [BirdNET-Analyzer](https://birdnet-team.github.io/BirdNET-Analyzer/) with [Claude Desktop](https://code.claude.com/docs/en/desktop). It enables natural language interaction with bird detection data, allowing users to:
+SongSage is a Model Context Protocol (MCP) server that bridges [BirdNET-Analyzer Sierra](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra) with [Claude Desktop](https://code.claude.com/docs/en/desktop). It enables natural language interaction with bird detection data, allowing users to:
 
 - Analyze audio recordings for bird species identification
 - Query detection results with flexible filtering
@@ -57,7 +57,7 @@ SongSage is a Model Context Protocol (MCP) server that bridges [BirdNET-Analyzer
 
 ## What is BirdNET?
 
-[BirdNET-Analyzer](https://birdnet-team.github.io/BirdNET-Analyzer/) is an AI-powered acoustic bird detection system developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/) at [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home) with [Chemnitz University of Technology](https://www.tu-chemnitz.de/index.html). It uses deep learning neural networks to identify bird species from their vocalizations in audio recordings.
+[BirdNET-Analyzer Sierra](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra) is an AI-powered acoustic bird detection system developed by the [K. Lisa Yang Center for Conservation Bioacoustics](https://www.birds.cornell.edu/ccb/) at [Cornell Lab of Ornithology](https://www.birds.cornell.edu/home) with [Chemnitz University of Technology](https://www.tu-chemnitz.de/index.html). It uses deep learning neural networks to identify bird species from their vocalizations in audio recordings.
 
 | Feature | Description |
 |---------|-------------|
