@@ -142,7 +142,7 @@ SongSage/
 
 ### Data Flow
 
-1. **Input:** CSV files containing bird detection data. Expected columns include species name, confidence score, timestamp, latitude/longitude, and optionally file path or recording metadata. Supports both wide format (one row per audio file) and long format (one row per detection). See the [`test_data/`](../test_data) directory for examples. For details on BirdNET's output formats and CLI options, see the BirdNET-Analyzer Sierra documentation.
+1. **Input:** CSV files containing bird detection data. Expected columns include species name, confidence score, timestamp, latitude/longitude, and optionally file path or recording metadata. Supports both wide format (one row per audio file) and long format (one row per detection). See the [`test_data/`](../test_data) directory for examples. For details on BirdNET's output formats and CLI options, see the [BirdNET-Analyzer Sierra documentation](https://github.com/birdnet-team/BirdNET-Analyzer-Sierra).
 2. **Loading:** Automatic detection of file format (wide vs long)
 3. **Normalization:** Column mapping to standard names
 4. **Caching:** In-memory DataFrame with modification tracking
