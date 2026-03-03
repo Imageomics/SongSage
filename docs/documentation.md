@@ -113,7 +113,7 @@ MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI assi
 
 ---
 
-## Architecture
+## Project Structure
 
 ```
 SongSage/
@@ -141,12 +141,12 @@ SongSage/
 
 ### Data Flow
 
-1. **Input:** CSV files from BirdNET-Analyzer in `results/` directory
+1. **Input:** CSV files containing bird detection data. Expected columns include species name, confidence score, timestamp, latitude/longitude, and optionally file path or recording metadata. Supports both wide format (one row per audio file) and long format (one row per detection).
 2. **Loading:** Automatic detection of file format (wide vs long)
 3. **Normalization:** Column mapping to standard names
 4. **Caching:** In-memory DataFrame with modification tracking
 5. **Query:** Tools filter/aggregate data based on parameters
-6. **Output:** JSON responses or PNG visualizations
+6. **Output:** JSON responses (e.g., species counts, temporal activity patterns, confidence statistics) or PNG visualizations (e.g., heatmaps, activity charts)
 
 ### Caching Strategy
 
