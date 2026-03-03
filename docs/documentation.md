@@ -112,7 +112,7 @@ MCP (Model Context Protocol) is Anthropic's open protocol for connecting AI assi
 
 ---
 
-## Architecture
+## Project Structure
 
 ```
 SongSage/
